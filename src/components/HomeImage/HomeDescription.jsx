@@ -12,6 +12,7 @@ const HomeDescription = () => {
           height: "85vh",
           width: "39vw",
           backgroundColor: "#001C30",
+          zIndex:1
         }}
       >
         <div
@@ -21,6 +22,7 @@ const HomeDescription = () => {
             flexDirection: "column",
             justifyContent: "center",
             padding: "0 10px",
+            
           }}
         >
           <p className="text-6xl font-bold">
@@ -49,7 +51,8 @@ const HomeDescription = () => {
           /* z-index: 4, */
           height: "400px",
           transform: " rotate(45deg)",
-          zIndex: "-1",
+          zIndex:0
+         
         }}
       ></div>
     </div>

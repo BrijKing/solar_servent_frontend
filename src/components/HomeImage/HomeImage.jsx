@@ -7,7 +7,7 @@ const HomeImage = () => {
       <div
         style={{
           background: "black",
-          position: "absolute",
+        
           top: 0,
           zIndex: -1,
         }}
