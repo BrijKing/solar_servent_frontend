@@ -17,7 +17,7 @@ const NavBar = () => {
             Login
           </div>
           <p className="p-3">|</p>
-          <div name="register" className="p-3">
+          <div name="register" className="p-3" style={{paddingRight:"35px"}}>
             Register
           </div>
         </div>
