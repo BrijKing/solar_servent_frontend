@@ -1,12 +1,13 @@
 import React from "react";
+import NavBar from "../components/NavBar";
 
 const HomePage = () => {
   return (
     <div>
       <NavBar />
-      <HomeImage />
+      {/* <HomeImage />
       <Features />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };
