@@ -1,13 +1,14 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar/NavBar";
+import HomeImage from "../components/HomeImage/HomeImage";
 
 const HomePage = () => {
   return (
     <div>
       <NavBar />
-      {/* <HomeImage />
-      <Features />
-      <Footer /> */}
+      <HomeImage />
+      {/* <Features /> */}
+      {/* <Footer /> */}
     </div>
   );
 };
