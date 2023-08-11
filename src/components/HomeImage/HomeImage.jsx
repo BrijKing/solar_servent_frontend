@@ -1,4 +1,5 @@
 import React from "react";
+import "./HomePage.module.css"
 
 const HomeImage = () => {
   return (
