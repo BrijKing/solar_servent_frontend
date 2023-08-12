@@ -1,10 +1,9 @@
-@keyframes  animateDiv{
-    0%{
-        left:-200px;
-    }
-    
+@keyframes animateDiv {
+  0% {
+    left: -200px;
+  }
 }
 
-.infoDiv{
-   animation: animateDiv 3s;
+.infoDiv {
+  animation: animateDiv 3s;
 }

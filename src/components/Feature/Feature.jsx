@@ -1,23 +1,19 @@
-import React from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
-const Feature = () => {
+const Feature = ({ title, description, icon }) => {
   return (
-   <div style={{padding:"50px 20px", display:"flex",justifyContent:"space-between"}}>
-     <div className='text-2xl' style={{width:"30%",height:"350px",background:"#001C30",opacity:"0.9",borderRadius:"10px"}}>
-        {/* <h1f> This is Feature one of our web</h1> */}
-        feature
-    </div>
-    <div className='text-2xl' style={{width:"30%",height:"350px",background:"#001C30",opacity:"0.9",borderRadius:"10px"}}>
-        {/* <h1f> This is Feature one of our web</h1> */}
-        feature
-    </div>
-    <div className='text-2xl' style={{width:"30%",height:"350px",background:"#001C30",opacity:"0.9",borderRadius:"10px"}}>
-        {/* <h1f> This is Feature one of our web</h1> */}
-        feature
-    </div>
+    <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
+      <div>
+        <FontAwesomeIcon className="w-full h-9" icon={icon} />
+      </div>
 
-   </div>
-  )
-}
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">{title}</div>
+        <p className="text-gray-700 text-base">{description}</p>
+      </div>
+    </div>
+  );
+};
 
-export default Feature
+export default Feature;
