@@ -7,7 +7,6 @@ const HomeImage = () => {
       <div
         style={{
           background: "black",
-        
           top: 0,
           zIndex: -1,
         }}
@@ -16,10 +15,11 @@ const HomeImage = () => {
           src="HomePage_Image.png"
           alt=""
           style={{
-            height: "100vh",
+            height: "88vh",
             width: "100vw",
             opacity: 0.7,
             transform: "rotateY(180deg)",
+            boxShadow: "0px, 0px 100px 0px rgba(0,0,0,0.75)"
           }}
         />
       </div>

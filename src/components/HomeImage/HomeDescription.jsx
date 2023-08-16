@@ -40,18 +40,18 @@ const HomeDescription = () => {
         </div>
       </div>
       <div
-        className={`${styles.infoDiv}`}
-        style={{
-          width: "400px",
-          background: " rgb(0, 28, 48)",
-          position: "absolute",
-          top: "181px",
-          left: "244px",
-          /* z-index: 4, */
-          height: "400px",
-          transform: " rotate(45deg)",
-          zIndex: 0,
-        }}
+        className={`${styles.infoDiv} ${styles.infoDiv2}`}
+        // style={{
+        //   width: "400px",
+        //   background: " rgb(0, 28, 48)",
+        //   position: "absolute",
+        //   top: "181px",
+        //   left: "244px",
+        //   /* z-index: 4, */
+        //   height: "400px",
+        //   transform: " rotate(45deg)",
+        //   zIndex: 0,
+        // }}
       ></div>
     </div>
   );

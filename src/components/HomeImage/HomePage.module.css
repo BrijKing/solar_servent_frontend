@@ -6,4 +6,17 @@
 
 .infoDiv {
   animation: animateDiv 3s;
+ 
 }
+.infoDiv2{
+  width: 368px;
+  background: rgb(0, 28, 48);
+  position: absolute;
+  top: 162px;
+  left: 332px;
+  height: 368px;
+  transform: rotate(45deg);
+  z-index: 0;
+}
+
+
