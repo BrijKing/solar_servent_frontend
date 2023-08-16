@@ -6,6 +6,13 @@ import {
   faSolarPanel,
 } from "@fortawesome/free-solid-svg-icons";
 
+// const features = [
+//   {
+//     description: "lorem ",
+//     icon: <icon />,
+//   },
+// ];
+
 const Features = () => {
   return (
     <div className="flex justify-between">
