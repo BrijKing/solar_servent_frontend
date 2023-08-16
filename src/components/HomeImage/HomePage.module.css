@@ -6,8 +6,8 @@
 
 .infoDiv {
   animation: animateDiv 3s;
- 
 }
+
 .infoDiv2{
   width: 368px;
   background: rgb(0, 28, 48);
@@ -16,7 +16,18 @@
   left: 332px;
   height: 368px;
   transform: rotate(45deg);
-  z-index: 0;
+  /* transform: translate(0px, 0px) scale(1.1, 1.1) skew(47deg, 0deg); */
+  z-index: 0;  
+
+  /* width: 332px;
+  background: rgb(0, 28, 48);
+  position: absolute;
+  top: 103px;
+  left: 334px;
+  height: 274px;
+  /* transform: rotate(45deg); */
+  /* transform: translate(0px, 0px) scale(1.1, 1.1) skew(47deg, 0deg);
+  z-index: 0; */ 
 }
 
 

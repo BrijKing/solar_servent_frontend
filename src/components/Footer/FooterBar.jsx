@@ -50,7 +50,7 @@ export default function FooterBar() {
         </div>
         <div className="col-12 text-center ">
           <Copy>
-            copyright &copy;2021. Viltis Health Group. All rights reserved.
+            copyright &copy;2023. Enifochips - an arrow company. All rights reserved.
           </Copy>
         </div>
       </Footer>
