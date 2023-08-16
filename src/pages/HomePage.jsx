@@ -10,7 +10,6 @@ const HomePage = () => {
     <div>
       <NavBar />
       <HomeImage />
-      {/* <Feature /> */}
       <Features />
       <FooterBar />
     </div>
