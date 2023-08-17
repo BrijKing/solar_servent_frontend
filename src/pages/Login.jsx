@@ -1,10 +1,11 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
     <>
-      <div style={{height:"100vh" ,overflow:"hidden"}}>
+      <div style={{ height: "100vh", overflow: "hidden" }}>
         <NavBar />
         <div
           className="absolute"
@@ -26,8 +27,8 @@ export default function Login() {
           />
         </div>
         <div
-          className="relative flex flex-col justify-center min-h-screen"
-          style={{ zIndex: 1 }}
+          className="relative flex flex-col justify-center"
+          style={{ zIndex: 1, height: "88vh" }}
         >
           <div className="w-full p-14 m-auto bg-[#001C30] rounded-md shadow-md lg:max-w-xl">
             <h1 className="text-3xl font-semibold text-center text-white underline">
@@ -71,9 +72,12 @@ export default function Login() {
             <p className="mt-8 text-xs font-light text-center text-white">
               {" "}
               Don't have an account?{" "}
-              <a href="#" className="font-medium text-white hover:underline">
+              <Link
+                to="/register"
+                className="font-medium text-white hover:underline"
+              >
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
         </div>
