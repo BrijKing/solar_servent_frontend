@@ -15,11 +15,11 @@ import {
 
 const Features = () => {
   return (
-    <div className="flex justify-between">
-      <Feature
-        title="Feature 1"
-        description="Description for Feature 1"
-        icon={faSolarPanel}
+      <div className="flex justify-between">
+        <Feature
+          title="Feature 1"
+          description="Description for Feature 1"
+          icon={faSolarPanel}
       />
       <Feature
         title="Feature 2"
