@@ -31,7 +31,7 @@ export default function Login() {
 
   console.log(loginData);
 
-  function onHandleSubmit(e) {
+  function HandleSubmit(e) {
     e.preventDefault();
     loginMutation.mutate(loginData);
   }
@@ -67,7 +67,7 @@ export default function Login() {
             <h1 className="text-3xl font-semibold text-center text-white underline">
               Sign in
             </h1>
-            <form className="mt-6" onSubmit={onHandleSubmit}>
+            <form className="mt-6" onSubmit={HandleSubmit}>
               <div className="mb-2">
                 <label
                   for="email"
