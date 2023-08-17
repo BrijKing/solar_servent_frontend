@@ -26,22 +26,22 @@ const HomeDescription = () => {
         >
           <p className="text-6xl font-bold">
             {" "}
-            <span style={{ color: "orange" }}>We Are The </span>{" "}
+            <span style={{ color: "orange" }}>Solar is the </span>{" "}
             <span>Solution</span>
           </p>
 
           <p className="text-lg mt-4 " style={{ textAlign: "justify" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            fringilla, orci vel suscipit feugiat, turpis tellus porttitor enim,
-            placerat molestie ligula nisl imperdiet leo. Nunc euismod dignissim
-            sem, molestie pulvinar lectus venenatis vitae. Sed nisl orci,
-            viverra in maximus
+            Dive into the world of renewable energy with our cutting-edge Solar
+            WebApp. Discover the immense potential of solar power, right at your
+            fingertips. From real-time solar data and personalized energy
+            simulations to step-by-step installation guides and expert insights,
+            our WebApp is designed to empower you to make informed decisions
+            about harnessing the sun's energy. Join us in the journey towards a
+            brighter and more sustainable future.
           </p>
         </div>
       </div>
-      <div
-        className={`${styles.infoDiv} ${styles.infoDiv2}`}
-      ></div>
+      <div className={`${styles.infoDiv} ${styles.infoDiv2}`}></div>
     </div>
   );
 };
