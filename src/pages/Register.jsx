@@ -1,8 +1,41 @@
-import React from "react";
+import { useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
+import api from "../utils/axiosInstance";
+import { useMutation } from "react-query";
+
+function registerUser(data) {
+  return api.post("/auth/user/register", data);
+}
 
 const Register = () => {
+  const data = {
+    email: "",
+    password: "",
+    role: "",
+  };
+
+  const [registerData, setregisterData] = useState(data);
+
+  function handleChange(e) {
+    setregisterData({ ...registerData, [e.target.name]: e.target.value });
+  }
+
+  const loginMutation = useMutation(registerUser, {
+    onSuccess: (data) => {
+      console.log(data.data);
+    },
+    onError: (error) => {
+      alert("something went wrong please register again !!");
+    },
+  });
+
+  console.log(registerData);
+
+  function HandleSubmit(e) {
+    e.preventDefault();
+    loginMutation.mutate(registerData);
+  }
   return (
     <div>
       <NavBar />
@@ -11,7 +44,7 @@ const Register = () => {
         style={{
           background: "black",
           height: "100vh",
-          overflowY:"hidden",
+          overflowY: "hidden",
           top: 0,
           zIndex: -1,
         }}
@@ -21,7 +54,7 @@ const Register = () => {
           alt=""
           style={{
             height: "100vh",
-            overflow:"hidden",
+            overflow: "hidden",
             width: "100vw",
             opacity: 0.7,
             transform: "rotateY(180deg)",
@@ -30,13 +63,13 @@ const Register = () => {
       </div>
       <div
         className="relative flex flex-col justify-center"
-        style={{ zIndex: 1 , height:"85vh"}}
+        style={{ zIndex: 1, height: "85vh" }}
       >
         <div className="w-full p-8 m-auto bg-[#001C30] rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-white underline">
             Register
           </h1>
-          <form className="mt-6">
+          <form className="mt-6" onSubmit={HandleSubmit}>
             <div className="mb-2">
               <label
                 htmlFor="email"
@@ -44,9 +77,12 @@ const Register = () => {
               >
                 Email
               </label>
-              <input required
+              <input
+                name="email"
+                required
                 type="email"
                 className="block w-full px-4 py-2 mt-2 text-[#001C30] bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                onChange={handleChange}
               />
             </div>
             <div className="mb-2">
@@ -56,8 +92,11 @@ const Register = () => {
               >
                 Password
               </label>
-              <input required
+              <input
+                name="password"
+                required
                 type="password"
+                onChange={handleChange}
                 className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -68,8 +107,16 @@ const Register = () => {
               >
                 Role
               </label>
-              <select required defaultValue={'DEFAULT'} className="block w-full px-4 py-2 mt-2 text-[#001C30] bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40">
-                <option disabled value="DEFAULT">Select Role</option>
+              <select
+                name="role"
+                required
+                defaultValue={"DEFAULT"}
+                onChange={handleChange}
+                className="block w-full px-4 py-2 mt-2 text-[#001C30] bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              >
+                <option disabled value="DEFAULT">
+                  Select Role
+                </option>
                 <option value="admin">Admin</option>
                 <option value="reviewer">Reviewer</option>
                 <option value="agent">Agent</option>
@@ -83,7 +130,12 @@ const Register = () => {
           </form>
 
           <p className="mt-8 text-xs font-light text-center text-white">
-              <Link to="/login" className="font-medium text-white hover:underline">Already have an account?</Link>
+            <Link
+              to="/login"
+              className="font-medium text-white hover:underline"
+            >
+              Already have an account?
+            </Link>
           </p>
         </div>
       </div>
