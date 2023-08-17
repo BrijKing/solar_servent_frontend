@@ -1,6 +1,12 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
+import axios from "axios";
+
+function loginUSer() {
+  return axios.post("");
+}
 
 export default function Login() {
   return (
