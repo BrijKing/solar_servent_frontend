@@ -1,14 +1,41 @@
-import React from "react";
+import { useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
-import axios from "axios";
+import { useMutation } from "react-query";
+import api from "../utils/axiosInstance";
 
-function loginUSer() {
-  return axios.post("");
+function loginUser(data) {
+  return api.post("/auth/user/token", data);
 }
 
 export default function Login() {
+  const data = {
+    email: "",
+    password: "",
+  };
+
+  const [loginData, setLoginData] = useState(data);
+
+  function handleChange(e) {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  }
+
+  const loginMutation = useMutation(loginUser, {
+    onSuccess: (data) => {
+      console.log(data.data);
+    },
+    onError: (error) => {
+      alert("incorrect emailId or password");
+    },
+  });
+
+  console.log(loginData);
+
+  function onHandleSubmit(e) {
+    e.preventDefault();
+    loginMutation.mutate(loginData);
+  }
+
   return (
     <>
       <div style={{ height: "100vh", overflow: "hidden" }}>
@@ -40,7 +67,7 @@ export default function Login() {
             <h1 className="text-3xl font-semibold text-center text-white underline">
               Sign in
             </h1>
-            <form className="mt-6">
+            <form className="mt-6" onSubmit={onHandleSubmit}>
               <div className="mb-2">
                 <label
                   for="email"
@@ -49,8 +76,10 @@ export default function Login() {
                   Email
                 </label>
                 <input
+                  name="email"
                   type="email"
                   className="block w-full px-4 py-2 mt-2 text-[#001C30] bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-2">
@@ -61,8 +90,10 @@ export default function Login() {
                   Password
                 </label>
                 <input
+                  name="password"
                   type="password"
                   className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  onChange={handleChange}
                 />
               </div>
               <a href="#" className="text-xs text-white hover:underline">
