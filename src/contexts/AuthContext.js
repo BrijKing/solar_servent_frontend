@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
 
   const login = () => {
     hasToken ? setIsLoggedIn(true) : setIsLoggedIn(false);
-    navigate("/dashboard");
+    navigate("/dashboard", { replace: true });
   };
 
   const logout = () => {

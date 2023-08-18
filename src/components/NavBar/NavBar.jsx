@@ -1,12 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import LinkForNav from "../NavLink/LinkForNav";
 
 const NavBar = () => {
   const { isLoggedIn, logout } = useAuth();
-  return isLoggedIn ? (
-    <h1>Hello how are i am under the water</h1>
-  ) : (
+  const navbarOptions = !isLoggedIn
+    ? [
+        {
+          id: 1,
+          name: "login",
+          path: "login",
+        },
+        {
+          id: 2,
+          name: "register",
+          path: "register",
+        },
+      ]
+    : [
+        {
+          id: 1,
+          name: "dashboard",
+          path: "dashboard",
+        },
+      ];
+
+  return (
     <div
       className="p-4  shadow-lg text-white"
       style={{ backgroundColor: "#001C30", overflow: "hidden" }}
@@ -19,15 +39,8 @@ const NavBar = () => {
         <h1 className="text-3xl">
           <Link to="/">Solar Servant</Link>
         </h1>
-        <div name="nav" className=" flex">
-          <div name="login" className="p-3">
-            <Link to="/login">Login</Link>
-          </div>
-          <p className="p-3">|</p>
-          <div name="register" className="p-3" style={{ paddingRight: "35px" }}>
-            <Link to="/register">Register</Link>
-          </div>
-        </div>
+
+        {<LinkForNav links={navbarOptions} />}
       </div>
     </div>
   );
