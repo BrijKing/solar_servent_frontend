@@ -4,7 +4,6 @@ import HomeImage from "../components/HomeImage/HomeImage";
 import Features from "../components/Features/Features";
 import FooterBar from "../components/Footer/FooterBar";
 
-
 const HomePage = () => {
   return (
     <div>

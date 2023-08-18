@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
 import api from "../utils/axiosInstance";
 import Cookies from "js-cookies";
@@ -17,8 +17,7 @@ export default function Login() {
   };
 
   const [loginData, setLoginData] = useState(data);
-  const { isLoggedIn, login } = useAuth();
-  const navigate = useNavigate();
+  const { login } = useAuth();
   function handleChange(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
