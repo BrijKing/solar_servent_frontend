@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import LinkForNav from "../NavLink/LinkForNav";
 
 const NavBar = () => {
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn } = useAuth();
   const navbarOptions = !isLoggedIn
     ? [
         {
@@ -45,7 +45,7 @@ const NavBar = () => {
           <Link to="/">Solar Servant</Link>
         </h1>
 
-        {<LinkForNav links={navbarOptions} />}
+        <LinkForNav links={navbarOptions} />
       </div>
     </div>
   );

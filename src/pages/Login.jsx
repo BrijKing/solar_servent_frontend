@@ -12,28 +12,26 @@ function loginUser(data) {
 
 export default function Login() {
   const data = {
-    email: "",
-    password: "",
+    email: "p@s.com",
+    password: "parth",
   };
 
   const [loginData, setLoginData] = useState(data);
   const { login } = useAuth();
+
   function handleChange(e) {
-    
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 
   const loginMutation = useMutation(loginUser, {
     onSuccess: (data) => {
-      Cookies.setItem("UserToken", data.data);
+      Cookies.setItem("UserToken", data.data, { path: "/" });
       login();
     },
     onError: (error) => {
-      alert("incorrect emailId or password");
+      alert("Incorrect email or password", error);
     },
   });
-
-  console.log(loginData);
 
   function HandleSubmit(e) {
     e.preventDefault();
@@ -100,9 +98,6 @@ export default function Login() {
                   onChange={handleChange}
                 />
               </div>
-              <a href="#" className="text-xs text-white hover:underline">
-                Forget Password?
-              </a>
               <div className="mt-6">
                 <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
                   Login

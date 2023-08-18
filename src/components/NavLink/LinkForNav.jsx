@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import Cookies from "js-cookies";
 
 const LinkForNav = ({ links }) => {
   const { logout } = useAuth();
 
   const handleLogout = (e) => {
-    e.preventDefault();
+    Cookies.removeItem("UserToken");
     logout();
   };
+
   return (
     <>
       <div className="flex pr-6">
         {Array.from(links)?.map((i) =>
-          i.path != "logout" ? (
+          i.path !== "logout" ? (
             <>
               <div className="p-3">
                 <Link to={`/${i.path}`}>{i.name}</Link>

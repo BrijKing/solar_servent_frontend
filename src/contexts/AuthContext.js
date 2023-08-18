@@ -5,20 +5,20 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const hasToken = Cookies.hasItem("UserToken");
-  const [isLoggedIn, setIsLoggedIn] = useState(hasToken);
+  const [isLoggedIn, setIsLoggedIn] = useState(() =>
+    Cookies.hasItem("UserToken")
+  );
   const navigate = useNavigate();
 
   const login = () => {
-    hasToken ? setIsLoggedIn(true) : setIsLoggedIn(false);
+    setIsLoggedIn(true);
     navigate("/dashboard", { replace: true });
   };
 
   const logout = () => {
-    Cookies.removeItem("UserToken");
     setIsLoggedIn(false);
-    navigate("/", { replace: true });
-
+    window.location = "/";
+    // navigate("/", { replace: true });
   };
 
   return (
