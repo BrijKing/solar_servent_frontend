@@ -19,6 +19,7 @@ export default function Login() {
   const [loginData, setLoginData] = useState(data);
   const { login } = useAuth();
   function handleChange(e) {
+    
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 

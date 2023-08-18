@@ -24,6 +24,11 @@ const NavBar = () => {
           name: "dashboard",
           path: "dashboard",
         },
+        {
+          id: 2,
+          name: "logout",
+          path: "logout",
+        },
       ];
 
   return (

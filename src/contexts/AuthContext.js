@@ -17,6 +17,8 @@ export function AuthProvider({ children }) {
   const logout = () => {
     Cookies.removeItem("UserToken");
     setIsLoggedIn(false);
+    navigate("/", { replace: true });
+
   };
 
   return (
