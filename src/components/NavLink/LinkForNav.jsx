@@ -15,7 +15,7 @@ const LinkForNav = ({ links }) => {
     <>
       <div className="flex pr-6">
         {Array.from(links)?.map((i) =>
-          i.path !== "logout" ? (
+          i.name !== "logout" ? (
             <>
               <div className="p-3">
                 <Link to={`/${i.path}`}>{i.name}</Link>
@@ -24,7 +24,7 @@ const LinkForNav = ({ links }) => {
           ) : (
             <>
               <div className="p-3">
-                <Link onClick={handleLogout} to={`/${i.path}`}>
+                <Link onClick={handleLogout} to="/">
                   {i.name}
                 </Link>
               </div>
