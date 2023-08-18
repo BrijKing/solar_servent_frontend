@@ -1,10 +1,14 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
+import SideBar from "../components/SideBar/SideBar";
 
 const Dashboard = () => {
-  return <div>
-    <NavBar />
-  </div>;
+  return (
+    <div>
+      <NavBar />
+      <SideBar />
+    </div>
+  );
 };
 
 export default Dashboard;
