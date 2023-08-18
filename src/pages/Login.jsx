@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import api from "../utils/axiosInstance";
 
@@ -15,14 +15,14 @@ export default function Login() {
   };
 
   const [loginData, setLoginData] = useState(data);
-
+  const navigate = useNavigate();
   function handleChange(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 
   const loginMutation = useMutation(loginUser, {
     onSuccess: (data) => {
-      console.log(data.data);
+      navigate("/dashboard");
     },
     onError: (error) => {
       alert("incorrect emailId or password");
