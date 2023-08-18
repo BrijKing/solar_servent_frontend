@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const NavBar = () => {
-  return (
+  const { isLoggedIn, logout } = useAuth();
+  return isLoggedIn ? (
+    <h1>Hello how are i am under the water</h1>
+  ) : (
     <div
       className="p-4  shadow-lg text-white"
       style={{ backgroundColor: "#001C30", overflow: "hidden" }}

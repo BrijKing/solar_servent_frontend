@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import api from "../utils/axiosInstance";
+import Cookies from "js-cookies";
+import { useAuth } from "../contexts/AuthContext";
 
 function loginUser(data) {
   return api.post("/auth/user/token", data);
@@ -15,6 +17,7 @@ export default function Login() {
   };
 
   const [loginData, setLoginData] = useState(data);
+  const { isLoggedIn, login } = useAuth();
   const navigate = useNavigate();
   function handleChange(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -22,7 +25,8 @@ export default function Login() {
 
   const loginMutation = useMutation(loginUser, {
     onSuccess: (data) => {
-      navigate("/dashboard");
+      Cookies.setItem("UserToken", data.data);
+      login();
     },
     onError: (error) => {
       alert("incorrect emailId or password");
