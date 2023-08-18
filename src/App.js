@@ -16,7 +16,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard' element={<Dashboard />} >
+            <Route path="addCustomer" element={<h1>add customer</h1>}/>
+            <Route path="viewCustomer" element={<h1>view customer</h1>}/>
+            <Route path="buyCustomer" element={<h1>Buy customer</h1>}/>
+          </Route>
       </Routes>
       </AuthProvider>
       {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
