@@ -30,7 +30,7 @@ export const handleJwtTokenExpiration = () => {
   const currentTime = Math.floor(Date.now() / 1000);
   if (token) {
     if (decodeToken(token).exp < currentTime) {
-      Cookies.removeItem("UserToken");
+      console.log("he he token expired ....., 👍");
       return <Navigate to={"/login"} />;
     }
   }

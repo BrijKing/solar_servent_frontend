@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../utils/axiosInstance";
 import { useQuery } from "react-query";
-
 import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
 
@@ -28,6 +27,10 @@ const ViewCustomer = () => {
     navigate("/login");
   }
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log("Search Customer:", event.target.value);
+  };
   return (
     <div>
       <form className="flex justify-end mb-3">
@@ -60,6 +63,7 @@ const ViewCustomer = () => {
             id="default-search"
             className=" w-[250px] p-4 pl-10 text-sm text-black border border-gray-300 rounded-lg bg-white dark:bg-white dark:text-black"
             placeholder="Search..."
+            onChange={handleSearch}
             required
           />
         </div>
