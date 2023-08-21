@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../utils/axiosInstance";
 import { useQuery } from "react-query";
-import { useQuery } from "react-query";
+
 import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
 
@@ -39,18 +39,23 @@ const ViewCustomer = () => {
           <th>Address</th>
         </tr>
         {/* <div className={`s{}`}> */}
-          {Array.from(customerData)?.map((data,index) => {
-            console.log("data is", data);
-            return (
-              <tr key={data.id} className={`text-center h-[60px] shadow-md ${index%2!=0 ? styles.evenRow:styles.oddRow}` }>
-                <td>{data.email}</td>
-                <td>{data.firstName}</td>
-                <td>{data.lastName}</td>
-                <td>{data.mobileNumber}</td>
-                <td>{data.address}</td>
-              </tr>
-            );
-          })}
+        {Array.from(customerData)?.map((data, index) => {
+          console.log("data is", data);
+          return (
+            <tr
+              key={data.id}
+              className={`text-center h-[60px] shadow-md ${
+                index % 2 != 0 ? styles.evenRow : styles.oddRow
+              }`}
+            >
+              <td>{data.email}</td>
+              <td>{data.firstName}</td>
+              <td>{data.lastName}</td>
+              <td>{data.mobileNumber}</td>
+              <td>{data.address}</td>
+            </tr>
+          );
+        })}
         {/* </div> */}
       </table>
     </div>
