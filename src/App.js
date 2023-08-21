@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./pages/HomePage";
 import Login from "./pages/Login";
-import { Route, Routes } from "react-router";
+import { Route, Routes} from "react-router";
 import Register from "./pages/Register";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { AuthProvider } from "./contexts/AuthContext";
