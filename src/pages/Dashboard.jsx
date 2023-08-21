@@ -8,7 +8,7 @@ const Dashboard = () => {
     <div className="relative">
       <NavBar />
       <SideBar />
-      <div className="absolute left-[400px] top-[200px]">
+      <div className="absolute left-[250px] top-[90px]">
         <Outlet />
       </div>
     </div>
