@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useAuth } from "../contexts/AuthContext";
 import Cookies from "js-cookies";
 
 const api = axios.create({

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../utils/axiosInstance";
 import { useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
 
@@ -25,7 +26,6 @@ const ViewCustomer = () => {
 
   if (isError) {
     navigate("/login");
-    // alert(getAllCustomerQuery.error.response.data);
   }
 
   return (
