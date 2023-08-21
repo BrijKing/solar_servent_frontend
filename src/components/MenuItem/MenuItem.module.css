@@ -5,3 +5,7 @@
 :global(.active) button {
   color: black;
 }
+
+.navlink button{
+   transition:0.5s all;
+}

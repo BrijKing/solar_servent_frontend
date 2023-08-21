@@ -28,6 +28,7 @@ const NavBar = () => {
           id: 2,
           name: "logout",
           path: "logout",
+          class:"text-orange-300"
         },
       ];
 

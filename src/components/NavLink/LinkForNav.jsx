@@ -17,13 +17,13 @@ const LinkForNav = ({ links }) => {
         {Array.from(links)?.map((i) =>
           i.name !== "logout" ? (
             <>
-              <div className="p-3">
+              <div className={`p-3 ${i.class}`}>
                 <Link to={`/${i.path}`}>{i.name}</Link>
               </div>
             </>
           ) : (
             <>
-              <div className="p-3">
+              <div className={`p-3 ${i.class}`}>
                 <Link onClick={handleLogout} to="/">
                   {i.name}
                 </Link>
