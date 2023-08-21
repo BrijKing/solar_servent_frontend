@@ -8,12 +8,16 @@ const MenuItems = () => {
       path: "addCustomer",
     },
     {
-      name: "View Customer",
+      name: "View Customers",
       path: "viewCustomer",
     },
     {
-      name: "Buy Customer",
-      path: "buyCustomer",
+      name: "Review Customer",
+      path: "reviewCustomer",
+    },
+    {
+      name: "View Employees",
+      path: "viewEmployees",
     },
   ];
   return (

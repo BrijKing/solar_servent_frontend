@@ -1,0 +1,7 @@
+:global(.active) {
+  background: rgb(219 234 254); ;
+}
+
+:global(.active) button {
+  color: black;
+}
