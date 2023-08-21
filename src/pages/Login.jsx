@@ -25,7 +25,7 @@ export default function Login() {
 
   const loginMutation = useMutation(loginUser, {
     onSuccess: (data) => {
-      Cookies.setItem("UserToken", data.data, { path: "/" });
+      Cookies.setItem("UserToken", data.data);
       login();
     },
     onError: (error) => {

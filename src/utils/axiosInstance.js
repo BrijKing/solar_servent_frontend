@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookies";
+import { handleJwtTokenExpiration } from "./jwtTokenDecoder";
 
 const api = axios.create({
   baseURL: "http://localhost:8080",
@@ -10,6 +11,7 @@ const AxiosInstance = () => {
     return Cookies.hasItem("UserToken");
   };
   api.interceptors.request.use((config) => {
+    handleJwtTokenExpiration();
     if (isLoggedIn) {
       const userToken = Cookies.getItem("UserToken");
 
