@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../utils/axiosInstance";
-import { useMutation, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 async function getAllCustomer() {
@@ -24,7 +24,6 @@ const ViewCustomer = () => {
 
   if (isError) {
     navigate("/login");
-    // alert(getAllCustomerQuery.error.response.data);
   }
 
   return (
@@ -38,7 +37,6 @@ const ViewCustomer = () => {
           <th>Address</th>
         </tr>
         {Array.from(customerData)?.map((data) => {
-          console.log("data is", data);
           return (
             <tr key={data.id}>
               <td>{data.email}</td>
