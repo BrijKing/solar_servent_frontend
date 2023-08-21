@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import api from "../../utils/axiosInstance";
-import { useMutation, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import styles from "./ViewCustomer.module.css";
 
 async function getAllCustomer() {
   console.log("appi called");
@@ -28,28 +29,29 @@ const ViewCustomer = () => {
   }
 
   return (
-    <div className="bg-blue-100">
-      <table className="w-[1000px]">
-        <tr>
-          <th className="p-3">E-mail</th>
+    <div>
+      <table className={`w-[1000px] border shadow-md ${styles.table}`}>
+        <tr className="bg-blue-400 shadow-md">
+          <th className="p-4 ">E-mail</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Mobile Number</th>
           <th>Address</th>
         </tr>
-        {Array.from(customerData)?.map((data) => {
-          console.log("data is", data);
-          return (
-            <tr key={data.id}>
-              <td>{data.email}</td>
-              <td>{data.firstName}</td>
-              <td>{data.lastName}</td>
-              <td>{data.mobileNumber}</td>
-              <td>{data.address}</td>
-            </tr>
-          );
-        })}
-        <tr></tr>
+        {/* <div className={`s{}`}> */}
+          {Array.from(customerData)?.map((data,index) => {
+            console.log("data is", data);
+            return (
+              <tr key={data.id} className={`text-center h-[60px] shadow-md ${index%2!=0 ? styles.evenRow:styles.oddRow}` }>
+                <td>{data.email}</td>
+                <td>{data.firstName}</td>
+                <td>{data.lastName}</td>
+                <td>{data.mobileNumber}</td>
+                <td>{data.address}</td>
+              </tr>
+            );
+          })}
+        {/* </div> */}
       </table>
     </div>
   );
