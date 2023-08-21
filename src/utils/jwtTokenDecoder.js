@@ -5,14 +5,19 @@ import { Navigate, redirect } from "react-router-dom";
 // if(!Cookies.hasItem("UserToken")) return <Navigate to="/login" />
 const token = Cookies.getItem("UserToken");
 
+function decodeToken(token) {
+  try {
+    return jwt(token);
+  } catch (e) {
+    alert("Invalid token .🤣");
+  }
+}
+
 export const getNameFromToken = () => {
   // if(!token) return <Navigate to="/login" />
 
   if (token) {
-    let decodedToken = jwt(token);
-    if (decodedToken) {
-      return decodedToken.sub;
-    }
+    return decodeToken(token).sub;
   }
 
   return "Guest";
@@ -21,21 +26,23 @@ export const getNameFromToken = () => {
 export const getAuthorityFromToken = () => {
   // if (!token) return <Navigate to="/login" />;
   // alert(!token)
-  let decodedToken = jwt(token);
-  if (decodedToken) {
-    return decodedToken.authorities;
+
+  if (token) {
+    return decodeToken(token).authorities;
   }
   return "";
 };
 
 export const handleJwtTokenExpiration = () => {
   // if(!token)  return <Navigate to="/login" />
-  let decodedToken = jwt(token);
+
   const currentTime = Math.floor(Date.now() / 1000);
 
-  if (decodedToken.exp < currentTime) {
-    Cookies.removeItem("UserToken");
-    console.log("ho ho ho ho ho ooooo me nikala");
-    return <Navigate to={"/login"} />;
+  if (token) {
+    if (decodeToken(token).exp < currentTime) {
+      Cookies.removeItem("UserToken");
+      console.log("ho ho ho ho ho ooooo me nikala");
+      return <Navigate to={"/login"} />;
+    }
   }
 };
