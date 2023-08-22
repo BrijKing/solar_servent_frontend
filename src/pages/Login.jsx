@@ -1,9 +1,6 @@
 import { useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
-import { useMutation } from "react-query";
-import api from "../utils/axiosInstance";
-import Cookies from "js-cookies";
 import { useAuth } from "../contexts/AuthContext";
 import loginUserApi from "../services/LoginService";
 
