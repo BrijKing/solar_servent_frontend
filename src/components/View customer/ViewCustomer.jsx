@@ -8,15 +8,22 @@ import Pagination from "../Pagination/Pagination";
 
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
+  const [totalPage, setTotalPage] = useState();
 
   useEffect(() => {
     getAllCustomer(0).then((res) => {
+      setTotalPage(res.data.totalPages);
       setCustomerData(res.data.content);
     });
   }, []);
   const handleSearch = (event) => {
     event.preventDefault();
     console.log("Search Customer:", event.target.value);
+  };
+  const handlePageChange = (pageNo) => {
+    getAllCustomer(pageNo - 1).then((res) => {
+      setCustomerData(res.data.content);
+    });
   };
   return (
     <div>
@@ -65,7 +72,6 @@ const ViewCustomer = () => {
         </tr>
         {/* <div className={`s{}`}> */}
         {Array.from(customerData)?.map((data, index) => {
-          console.log("data is", data);
           return (
             <tr
               key={data.id}
@@ -83,7 +89,7 @@ const ViewCustomer = () => {
         })}
         {/* </div> */}
       </table>
-      <Pagination />
+      <Pagination onPageChange={handlePageChange} totalPage={totalPage} />
     </div>
   );
 };
