@@ -24,7 +24,7 @@ export default function Pagination({ setCurrentPage, totalPage, currentPage }) {
           <button
             disabled={currentPage === pageNumbers[0] || currentPage === 0}
             onClick={handlePrivous}
-            className="relative block rounded bg-blue-500 px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-blue-900 dark:text-white dark:hover:bg-blue-900 dark:hover:text-white"
+            className="disabled:bg-slate-400 relative block rounded bg-blue-500 px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-blue-900 dark:text-white dark:hover:bg-blue-900 dark:hover:text-white"
           >
             Previous
           </button>
@@ -41,9 +41,9 @@ export default function Pagination({ setCurrentPage, totalPage, currentPage }) {
         ))}
         <li className="p-2">
           <button
-            disabled={currentPage === pageNumbers.slice(-1)}
+            disabled={currentPage === pageNumbers.length}
             onClick={handleNext}
-            className="relative block rounded bg-blue-500 px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-blue-900 dark:text-white dark:hover:bg-blue-900 dark:hover:text-white"
+            className="disabled:bg-slate-400 relative block rounded bg-blue-500 px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-blue-900 dark:text-white dark:hover:bg-blue-900 dark:hover:text-white"
           >
             Next
           </button>
