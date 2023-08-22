@@ -4,14 +4,18 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
 
-async function getAllCustomer() {
+async function getAllCustomer(pageNo) {
   console.log("appi called");
-  const response = await api.get("/customer/getAll");
+  const response = await api.get(`/customer/getAll?pageNo=${pageNo}`);
   return response;
 }
 
 const ViewCustomer = () => {
-  const getAllCustomerQuery = useQuery("getAllCustomer", getAllCustomer);
+  const [pageNo, setPageNo] = useState(0);
+  const getAllCustomerQuery = useQuery(
+    "getAllCustomer",
+    getAllCustomer(pageNo)
+  );
   const [customerData, setCustomerData] = useState({});
   const { isSuccess, isError } = getAllCustomerQuery;
 
