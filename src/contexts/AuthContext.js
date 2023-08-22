@@ -10,13 +10,13 @@ export function AuthProvider({ children }) {
     Cookies.hasItem("UserToken")
   );
 
-  const [userName,setUserName]=useState("Guest")
+  const [userName, setUserName] = useState(getNameFromToken());
   const navigate = useNavigate();
 
   const login = async (token) => {
     Cookies.setItem("UserToken", token);
-     setIsLoggedIn(true);
-     setUserName(getNameFromToken());
+    setIsLoggedIn(true);
+    setUserName(getNameFromToken());
     navigate("/dashboard", { replace: true });
   };
 
@@ -26,7 +26,9 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout,setUserName,userName }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, login, logout, setUserName, userName }}
+    >
       {children}
     </AuthContext.Provider>
   );
