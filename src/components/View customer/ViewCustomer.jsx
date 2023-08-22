@@ -9,6 +9,7 @@ import Pagination from "../Pagination/Pagination";
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
   const [totalPage, setTotalPage] = useState();
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     getAllCustomer(0).then((res) => {
@@ -16,15 +17,17 @@ const ViewCustomer = () => {
       setCustomerData(res.data.content);
     });
   }, []);
+  useEffect(() => {
+    if (currentPage !== 0)
+      getAllCustomer(currentPage - 1).then((res) => {
+        setCustomerData(res.data.content);
+      });
+  }, [currentPage]);
   const handleSearch = (event) => {
     event.preventDefault();
     console.log("Search Customer:", event.target.value);
   };
-  const handlePageChange = (pageNo) => {
-    getAllCustomer(pageNo - 1).then((res) => {
-      setCustomerData(res.data.content);
-    });
-  };
+
   return (
     <div>
       <form className="flex justify-end mb-3">
@@ -89,7 +92,11 @@ const ViewCustomer = () => {
         })}
         {/* </div> */}
       </table>
-      <Pagination onPageChange={handlePageChange} totalPage={totalPage} />
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        totalPage={totalPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
