@@ -2,8 +2,6 @@ import jwt from "jwt-decode";
 import Cookies from "js-cookies";
 import { Navigate } from "react-router-dom";
 
-const token = Cookies.getItem("UserToken");
-
 function decodeToken(token) {
   try {
     return jwt(token);
@@ -13,6 +11,7 @@ function decodeToken(token) {
 }
 
 export const getNameFromToken = () => {
+  const token = Cookies.getItem("UserToken");
   if (token) {
     return decodeToken(token).sub;
   }
@@ -20,6 +19,7 @@ export const getNameFromToken = () => {
 };
 
 export const getAuthorityFromToken = () => {
+  const token = Cookies.getItem("UserToken");
   if (token) {
     return decodeToken(token).authorities;
   }
@@ -28,9 +28,10 @@ export const getAuthorityFromToken = () => {
 
 export const handleJwtTokenExpiration = () => {
   const currentTime = Math.floor(Date.now() / 1000);
+  const token = Cookies.getItem("UserToken");
+
   if (token) {
     if (decodeToken(token).exp < currentTime) {
-      console.log("he he token expired ....., 👍");
       return <Navigate to={"/login"} />;
     }
   }
