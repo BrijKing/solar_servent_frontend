@@ -6,7 +6,7 @@ import Pagination from "../Pagination/Pagination";
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
   const [totalPage, setTotalPage] = useState();
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchCustomer, setSearchCustomer] = useState("");
 
   useEffect(() => {
@@ -15,12 +15,14 @@ const ViewCustomer = () => {
       setCustomerData(res.data.content);
     });
   }, []);
+
   useEffect(() => {
     if (currentPage !== 0)
       getAllCustomer(currentPage - 1).then((res) => {
         setCustomerData(res.data.content);
       });
   }, [currentPage]);
+
   const handleSearch = (event) => {
     event.preventDefault();
     console.log("Search Customer:", event.target.value);
@@ -31,7 +33,7 @@ const ViewCustomer = () => {
       <form className="flex justify-end mb-3">
         <label
           for="default-search"
-          className="mb-2 text-sm font-medium text-white sr-only text-white"
+          className="mb-2 text-sm font-medium text-white sr-only"
         >
           Search
         </label>

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import Cookies from "js-cookies";
 import { useNavigate } from "react-router-dom";
+import { getNameFromToken } from "../utils/jwtTokenDecoder";
 
 const AuthContext = createContext();
 
@@ -8,11 +9,14 @@ export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(() =>
     Cookies.hasItem("UserToken")
   );
+
+  const [userName,setUserName]=useState("Guest")
   const navigate = useNavigate();
 
-  const login = (token) => {
+  const login = async (token) => {
     Cookies.setItem("UserToken", token);
-    setIsLoggedIn(true);
+     setIsLoggedIn(true);
+     setUserName(getNameFromToken());
     navigate("/dashboard", { replace: true });
   };
 
@@ -22,7 +26,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout,setUserName,userName }}>
       {children}
     </AuthContext.Provider>
   );
