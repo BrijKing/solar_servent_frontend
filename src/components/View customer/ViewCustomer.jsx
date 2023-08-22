@@ -4,19 +4,30 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
 import getAllCustomer from "../../services/GetCustomerService";
+import Pagination from "../Pagination/Pagination";
 
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
+  const [totalPage, setTotalPage] = useState();
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     getAllCustomer(0).then((res) => {
+      setTotalPage(res.data.totalPages);
       setCustomerData(res.data.content);
     });
-  });
+  }, []);
+  useEffect(() => {
+    if (currentPage !== 0)
+      getAllCustomer(currentPage - 1).then((res) => {
+        setCustomerData(res.data.content);
+      });
+  }, [currentPage]);
   const handleSearch = (event) => {
     event.preventDefault();
     console.log("Search Customer:", event.target.value);
   };
+
   return (
     <div>
       <form className="flex justify-end mb-3">
@@ -64,7 +75,6 @@ const ViewCustomer = () => {
         </tr>
         {/* <div className={`s{}`}> */}
         {Array.from(customerData)?.map((data, index) => {
-          console.log("data is", data);
           return (
             <tr
               key={data.id}
@@ -82,6 +92,11 @@ const ViewCustomer = () => {
         })}
         {/* </div> */}
       </table>
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        totalPage={totalPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
