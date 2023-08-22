@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import { Link, Navigate } from "react-router-dom";
-import api from "../utils/axiosInstance";
-import { useMutation } from "react-query";
+import { Link } from "react-router-dom";
 import registerUserApi from "../services/RegisterService";
 
 const Register = () => {

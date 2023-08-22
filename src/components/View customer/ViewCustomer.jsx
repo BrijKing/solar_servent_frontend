@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import api from "../../utils/axiosInstance";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
 import getAllCustomer from "../../services/GetCustomerService";
 import Pagination from "../Pagination/Pagination";
@@ -79,7 +76,7 @@ const ViewCustomer = () => {
             <tr
               key={data.id}
               className={`text-center h-[60px] shadow-md ${
-                index % 2 != 0 ? styles.evenRow : styles.oddRow
+                index % 2 !== 0 ? styles.evenRow : styles.oddRow
               }`}
             >
               <td>{data.email}</td>
