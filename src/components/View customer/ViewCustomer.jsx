@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
 import getAllCustomer from "../../services/GetCustomerService";
+import Pagination from "../Pagination/Pagination";
 
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
@@ -12,7 +13,7 @@ const ViewCustomer = () => {
     getAllCustomer(0).then((res) => {
       setCustomerData(res.data.content);
     });
-  });
+  }, []);
   const handleSearch = (event) => {
     event.preventDefault();
     console.log("Search Customer:", event.target.value);
@@ -82,6 +83,7 @@ const ViewCustomer = () => {
         })}
         {/* </div> */}
       </table>
+      <Pagination />
     </div>
   );
 };
