@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ViewCustomer.module.css";
-import getAllCustomer from "../../services/GetCustomerService";
+import { getAllCustomer } from "../../services/CustomerService";
 import Pagination from "../Pagination/Pagination";
 
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
   const [totalPage, setTotalPage] = useState();
   const [currentPage, setCurrentPage] = useState(0);
+  const [searchCustomer, setSearchCustomer] = useState("");
 
   useEffect(() => {
     getAllCustomer(0).then((res) => {
