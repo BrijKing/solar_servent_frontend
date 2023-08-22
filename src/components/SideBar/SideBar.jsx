@@ -7,7 +7,7 @@ const SideBar = () => {
     <>
       <div
         className="h-screen relative flex justify-center"
-        style={{ backgroundColor: "#002B4A", width: "15rem" }}
+        style={{ backgroundColor: "#002B4A", width: "15rem"}}
       >
         <ProfilePic />
 
