@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import api from "../utils/axiosInstance";
 import { useMutation } from "react-query";
-
-function registerUser(data) {
-  return api.post("/auth/user/register", data);
-}
+import registerUserApi from "../services/RegisterService";
 
 const Register = () => {
   const data = {
@@ -21,20 +18,11 @@ const Register = () => {
     setregisterData({ ...registerData, [e.target.name]: e.target.value });
   }
 
-  const loginMutation = useMutation(registerUser, {
-    onSuccess: (data) => {
-      console.log(data.data);
-    },
-    onError: (error) => {
-      alert("something went wrong please register again !!");
-    },
-  });
-
   console.log(registerData);
 
   function HandleSubmit(e) {
     e.preventDefault();
-    loginMutation.mutate(registerData);
+    registerUserApi(registerData).then((res) => console.log(res.data));
   }
   return (
     <div>
