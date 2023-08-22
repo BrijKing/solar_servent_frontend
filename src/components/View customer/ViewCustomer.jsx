@@ -9,7 +9,9 @@ const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
 
   useEffect(() => {
-    getAllCustomer(0);
+    getAllCustomer(0).then((res) => {
+      setCustomerData(res.data.content);
+    });
   });
   const handleSearch = (event) => {
     event.preventDefault();

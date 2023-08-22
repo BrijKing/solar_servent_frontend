@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import api from "../utils/axiosInstance";
 import { useMutation } from "react-query";
 import registerUserApi from "../services/RegisterService";
@@ -22,7 +22,7 @@ const Register = () => {
 
   function HandleSubmit(e) {
     e.preventDefault();
-    registerData(registerData);
+    registerUserApi(registerData).then((res) => console.log(res.data));
   }
   return (
     <div>
