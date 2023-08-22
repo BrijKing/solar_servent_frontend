@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ViewCustomer.module.css";
-import { getAllCustomer } from "../../services/CustomerService";
+import {
+  getAllCustomerApi,
+  searchCustomerApi,
+} from "../../services/CustomerService";
 import Pagination from "../Pagination/Pagination";
+import { debounce } from "debounce";
 
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
   const [totalPage, setTotalPage] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchCustomer, setSearchCustomer] = useState("");
+  const [searchCustomer, setSearchCustomer] = useState();
 
   useEffect(() => {
-    getAllCustomer(0).then((res) => {
+    getAllCustomerApi(0).then((res) => {
       setTotalPage(res.data.totalPages);
       setCustomerData(res.data.content);
     });
@@ -18,19 +22,34 @@ const ViewCustomer = () => {
 
   useEffect(() => {
     if (currentPage !== 0)
-      getAllCustomer(currentPage - 1).then((res) => {
+      getAllCustomerApi(currentPage - 1).then((res) => {
         setCustomerData(res.data.content);
       });
   }, [currentPage]);
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    console.log("Search Customer:", event.target.value);
+  const handleSearch = (e) => {
+    setSearchCustomer(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    searchCustomerApi(searchCustomer)
+      .then((res) => {
+        setCustomerData(res.data);
+      })
+      .catch((e) => {
+        alert("sorry no coustomer found 😔");
+        getAllCustomerApi(0).then((res) => {
+          setTotalPage(res.data.totalPages);
+          setCustomerData(res.data.content);
+        });
+      });
   };
 
   return (
     <div>
-      <form className="flex justify-end mb-3">
+      <form onSubmit={handleSubmit} className="flex justify-end mb-3">
         <label
           for="default-search"
           className="mb-2 text-sm font-medium text-white sr-only"
@@ -56,7 +75,7 @@ const ViewCustomer = () => {
             </svg>
           </div>
           <input
-            type="search"
+            type="text"
             id="default-search"
             className=" w-[250px] p-4 pl-10 text-sm text-black border border-gray-300 rounded-lg bg-white dark:bg-white dark:text-black"
             placeholder="Search..."

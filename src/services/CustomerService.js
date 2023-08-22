@@ -1,9 +1,9 @@
 import api from "../utils/axiosInstance";
 
-export async function getAllCustomer(pageNo) {
+export async function getAllCustomerApi(pageNo) {
   return await api.get(`/customer/getAll?pageNo=${pageNo}`);
 }
 
-export async function searchCustomer(email) {
+export async function searchCustomerApi(email) {
   return await api.get(`/customer/getCustomer/${email}`);
 }
