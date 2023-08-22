@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
 export default function Pagination({ setCurrentPage, totalPage, currentPage }) {
   const handlePageClick = (pageNumber) => {
@@ -23,7 +22,7 @@ export default function Pagination({ setCurrentPage, totalPage, currentPage }) {
       <ul className="list-style-none flex justify-end ">
         <li className="p-2">
           <button
-            disabled={currentPage == pageNumbers[0] || currentPage == 0}
+            disabled={currentPage === pageNumbers[0] || currentPage === 0}
             onClick={handlePrivous}
             className="relative block rounded bg-blue-500 px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-blue-900 dark:text-white dark:hover:bg-blue-900 dark:hover:text-white"
           >
@@ -42,7 +41,7 @@ export default function Pagination({ setCurrentPage, totalPage, currentPage }) {
         ))}
         <li className="p-2">
           <button
-            disabled={currentPage == pageNumbers.slice(-1)}
+            disabled={currentPage === pageNumbers.slice(-1)}
             onClick={handleNext}
             className="relative block rounded bg-blue-500 px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-blue-900 dark:text-white dark:hover:bg-blue-900 dark:hover:text-white"
           >
