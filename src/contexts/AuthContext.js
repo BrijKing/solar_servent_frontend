@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setIsLoggedIn(false);
     window.location = "/";
-    // navigate("/", { replace: true });
   };
 
   return (

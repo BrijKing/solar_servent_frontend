@@ -29,7 +29,6 @@ const App = () => {
             </Route>
           </Routes>
         </AuthProvider>
-        {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
       </QueryClientProvider>
     </>
   );
