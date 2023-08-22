@@ -10,7 +10,8 @@ export function AuthProvider({ children }) {
   );
   const navigate = useNavigate();
 
-  const login = () => {
+  const login = (token) => {
+    Cookies.setItem("UserToken", token);
     setIsLoggedIn(true);
     navigate("/dashboard", { replace: true });
   };

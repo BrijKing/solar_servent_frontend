@@ -3,34 +3,14 @@ import api from "../../utils/axiosInstance";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import styles from "./ViewCustomer.module.css";
-
-async function getAllCustomer(pageNo) {
-  console.log("appi called");
-  const response = await api.get(`/customer/getAll?pageNo=${pageNo}`);
-  return response;
-}
+import getAllCustomer from "../../services/GetCustomerService";
 
 const ViewCustomer = () => {
-  const [pageNo, setPageNo] = useState(0);
-  const getAllCustomerQuery = useQuery(
-    "getAllCustomer",
-    getAllCustomer(pageNo)
-  );
   const [customerData, setCustomerData] = useState({});
-  const { isSuccess, isError } = getAllCustomerQuery;
 
-  const navigate = useNavigate();
   useEffect(() => {
-    if (isSuccess) {
-      setCustomerData(getAllCustomerQuery.data.data);
-      console.log("customer data is", getAllCustomerQuery.data);
-    }
-  }, [isSuccess, getAllCustomerQuery.data]);
-
-  if (isError) {
-    navigate("/login");
-  }
-
+    getAllCustomer(0);
+  });
   const handleSearch = (event) => {
     event.preventDefault();
     console.log("Search Customer:", event.target.value);
