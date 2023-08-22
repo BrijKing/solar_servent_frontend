@@ -5,10 +5,7 @@ import { useMutation } from "react-query";
 import api from "../utils/axiosInstance";
 import Cookies from "js-cookies";
 import { useAuth } from "../contexts/AuthContext";
-
-function loginUser(data) {
-  return api.post("/auth/user/token", data);
-}
+import loginUserApi from "../services/LoginService";
 
 export default function Login() {
   const data = {
@@ -23,19 +20,11 @@ export default function Login() {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 
-  const loginMutation = useMutation(loginUser, {
-    onSuccess: (data) => {
-      Cookies.setItem("UserToken", data.data, { path: "/" });
-      login();
-    },
-    onError: (error) => {
-      alert("Incorrect email or password", error);
-    },
-  });
-
   function HandleSubmit(e) {
     e.preventDefault();
-    loginMutation.mutate(loginData);
+    loginUserApi(data).then((res) => {
+      login(res.data);
+    });
   }
 
   return (
