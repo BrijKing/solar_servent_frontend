@@ -16,10 +16,11 @@ export default function Login() {
   function handleChange(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
-
+ 
   function HandleSubmit(e) {
     e.preventDefault();
-    loginUserApi(data).then((res) => {
+    console.log(loginData);
+    loginUserApi(loginData).then((res) => {
       login(res.data);
     });
   }

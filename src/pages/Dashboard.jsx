@@ -5,10 +5,10 @@ import { Outlet } from "react-router";
 
 const Dashboard = () => {
   return (
-    <div className="relative">
+    <div className="relative h-[100vh] overflow-hidden">
       <NavBar />
       <SideBar />
-      <div className="absolute left-[250px] top-[100px]">
+      <div className="absolute left-[227px] top-[77px]">
         <Outlet />
       </div>
     </div>
