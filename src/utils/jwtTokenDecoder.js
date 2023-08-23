@@ -32,6 +32,8 @@ export const handleJwtTokenExpiration = () => {
 
   if (token) {
     if (decodeToken(token).exp < currentTime) {
+      alert("your session has been expired please log in again !!");
+      Cookies.removeItem("UserToken");
       return <Navigate to={"/login"} />;
     }
   }
