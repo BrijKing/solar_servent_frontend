@@ -1,47 +1,48 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
+
+import styles from "./ViewEmployee.module.css";
 import {
-  getAllCustomerApi,
-  searchCustomerApi,
-} from "../../services/CustomerService";
-import styles from './ViewEmployee.module.css'
+  getAllEmployeeApi,
+  searchEmployeeApi,
+} from "../../services/EmployeeService";
 
 const ViewEmployee = () => {
-  const [customerData, setCustomerData] = useState({});
+  const [employeeData, setEmployeeData] = useState({});
   const [totalPage, setTotalPage] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchCustomer, setSearchCustomer] = useState();
+  const [searchEmployee, setSearchEmployee] = useState();
 
   useEffect(() => {
-    getAllCustomerApi(0).then((res) => {
+    getAllEmployeeApi(0).then((res) => {
       setTotalPage(res.data.totalPages);
-      setCustomerData(res.data.content);
+      setEmployeeData(res.data.content);
     });
   }, []);
 
   useEffect(() => {
     if (currentPage !== 0)
-      getAllCustomerApi(currentPage - 1).then((res) => {
-        setCustomerData(res.data.content);
+      getAllEmployeeApi(currentPage - 1).then((res) => {
+        setEmployeeData(res.data.content);
       });
   }, [currentPage]);
 
   const handleSearch = (e) => {
-    setSearchCustomer(e.target.value);
+    setSearchEmployee(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    searchCustomerApi(searchCustomer)
+    searchEmployeeApi(searchEmployee)
       .then((res) => {
-        setCustomerData(res.data);
+        setEmployeeData(res.data);
       })
       .catch((e) => {
-        alert("sorry no coustomer found 😔");
-        getAllCustomerApi(0).then((res) => {
+        alert("sorry no Employee found 😔");
+        getAllEmployeeApi(0).then((res) => {
           setTotalPage(res.data.totalPages);
-          setCustomerData(res.data.content);
+          setEmployeeData(res.data.content);
         });
       });
   };
@@ -91,7 +92,7 @@ const ViewEmployee = () => {
           <th>Mobile Number</th>
           <th>Address</th>
         </tr>
-        {Array.from(customerData)?.map((data, index) => {
+        {Array.from(employeeData)?.map((data, index) => {
           return (
             <tr
               key={data.id}
