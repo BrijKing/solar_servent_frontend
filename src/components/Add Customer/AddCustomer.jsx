@@ -85,7 +85,7 @@ const AddCustomer = () => {
                   Mobile number
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   name="mobno"
                   id="mobno"
                   className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
