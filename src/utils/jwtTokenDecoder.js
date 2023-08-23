@@ -1,6 +1,6 @@
 import jwt from "jwt-decode";
 import Cookies from "js-cookies";
-import { Navigate } from "react-router-dom";
+import { Navigate, useHistory } from "react-router-dom";
 
 function decodeToken(token) {
   try {
@@ -32,9 +32,9 @@ export const handleJwtTokenExpiration = () => {
 
   if (token) {
     if (decodeToken(token).exp < currentTime) {
-      alert("your session has been expired please log in again !!");
       Cookies.removeItem("UserToken");
-      return <Navigate to={"/login"} />;
+      return Promise.reject("tokenExpired"); // Reject with a custom value
     }
   }
+  return Promise.resolve(); // Resolve if token is valid
 };
