@@ -25,7 +25,7 @@ const AddCustomer = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="bg-gray-90 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                 required
               />
             </div>
@@ -41,7 +41,7 @@ const AddCustomer = () => {
                   type="text"
                   name="fname"
                   id="fname"
-                  className="bg-gray-90 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                   required
                 />
               </div>
@@ -56,7 +56,7 @@ const AddCustomer = () => {
                   type="text"
                   name="lname"
                   id="lname"
-                  className="bg-gray-90 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                   required
                 />
               </div>
@@ -73,7 +73,7 @@ const AddCustomer = () => {
                   type="text"
                   name="address"
                   id="address"
-                  className="h-20 bg-gray-90 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  className="h-20 bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                   required=""
                 />
               </div>
@@ -88,7 +88,7 @@ const AddCustomer = () => {
                   type="number"
                   name="mobno"
                   id="mobno"
-                  className="bg-gray-90 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                   required
                 />
               </div>
@@ -111,12 +111,6 @@ const AddCustomer = () => {
             >
               Add Customer
             </button>
-            <p class="text-sm font-light text-gray-900 dark:text-gray-900">
-              Already have an account?{" "}
-              <button className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-                Login here
-              </button>
-            </p>
           </form>
         </div>
       </div>
