@@ -87,10 +87,7 @@ const ViewEmployee = () => {
       <table className={`w-[1000px] border shadow-md ${styles.table}`}>
         <tr className="bg-blue-400 shadow-md">
           <th className="p-4 ">E-mail</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Mobile Number</th>
-          <th>Address</th>
+          <th className="p-4"> role</th>
         </tr>
         {Array.from(employeeData)?.map((data, index) => {
           return (
@@ -101,10 +98,7 @@ const ViewEmployee = () => {
               }`}
             >
               <td>{data.email}</td>
-              <td>{data.firstName}</td>
-              <td>{data.lastName}</td>
-              <td>{data.mobileNumber}</td>
-              <td>{data.address}</td>
+              <td>{data.role}</td>
             </tr>
           );
         })}
