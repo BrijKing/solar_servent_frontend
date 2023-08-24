@@ -19,7 +19,6 @@ export default function Login() {
  
   function HandleSubmit(e) {
     e.preventDefault();
-    console.log(loginData);
     loginUserApi(loginData).then((res) => {
       login(res.data);
     });
