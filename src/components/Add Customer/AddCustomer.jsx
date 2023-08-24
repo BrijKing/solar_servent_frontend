@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { searchCustomerApi } from "../../services/CustomerService";
 
 const AddCustomer = () => {
+  const data = {
+    email: "",
+    fname: "",
+    lname: "",
+    mobno: "",
+    address: "",
+  };
+
+  const [addCustomer, setAddCustomer] = useState(data);
+  const [user, setUser] = useState({});
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setAddCustomer({ ...addCustomer, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    setError("");
+    searchCustomerApi(addCustomer.email)
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  }, [addCustomer]);
+
   return (
     <div class="flex flex-col items-center justify-center ">
       <div
@@ -27,6 +55,7 @@ const AddCustomer = () => {
                 id="email"
                 className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                 required
+                onChange={handleChange}
               />
             </div>
             <div className="flex justify-between gap-28">
@@ -43,6 +72,7 @@ const AddCustomer = () => {
                   id="fname"
                   className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="flex-1">
@@ -58,6 +88,7 @@ const AddCustomer = () => {
                   id="lname"
                   className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                   required
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -74,7 +105,8 @@ const AddCustomer = () => {
                   name="address"
                   id="address"
                   className="h-20 bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
-                  required=""
+                  required
+                  onChange={handleChange}
                 />
               </div>
               <div className="flex-1">
@@ -90,6 +122,7 @@ const AddCustomer = () => {
                   id="mobno"
                   className="bg-white border border-blue-900 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-blue-900 dark:text-blue-900"
                   required
+                  onChange={handleChange}
                 />
               </div>
             </div>
