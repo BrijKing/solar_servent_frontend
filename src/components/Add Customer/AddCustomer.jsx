@@ -3,6 +3,7 @@ import {
   addCustomerForRevivew,
   searchCustomerApi,
 } from "../../services/CustomerService";
+import { getNameFromToken } from "../../utils/jwtTokenDecoder";
 
 const AddCustomer = () => {
   const data = {
@@ -28,6 +29,7 @@ const AddCustomer = () => {
     formData.append("email", addCustomer.email);
     formData.append("isSigned", false);
     formData.append("pdfData", pdfFile);
+    formData.append("signBy", getNameFromToken());
     e.preventDefault();
     addCustomerForRevivew(formData)
       .then((res) => {
