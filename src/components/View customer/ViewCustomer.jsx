@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styles from "./ViewCustomer.module.css";
 import {
   getAllCustomerApi,
   searchCustomerApi,
 } from "../../services/CustomerService";
 import Pagination from "../Pagination/Pagination";
-import { debounce } from "debounce";
+import Table from "../Table/CustomTable";
 
 const ViewCustomer = () => {
   const [customerData, setCustomerData] = useState({});
@@ -47,6 +46,8 @@ const ViewCustomer = () => {
       });
   };
 
+   console.log("customer data",customerData)
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex justify-end mb-3">
@@ -84,33 +85,17 @@ const ViewCustomer = () => {
           />
         </div>
       </form>
-      <table className={`w-[1000px] border shadow-md ${styles.table}`}>
-        <tr className="bg-blue-400 shadow-md">
-          <th className="p-4 ">E-mail</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Mobile Number</th>
-          <th>Address</th>
-        </tr>
-        {/* <div className={`s{}`}> */}
-        {Array.from(customerData)?.map((data, index) => {
-          return (
-            <tr
-              key={data.id}
-              className={`text-center h-[60px] shadow-md ${
-                index % 2 !== 0 ? styles.evenRow : styles.oddRow
-              }`}
-            >
-              <td>{data.email}</td>
-              <td>{data.firstName}</td>
-              <td>{data.lastName}</td>
-              <td>{data.mobileNumber}</td>
-              <td>{data.address}</td>
-            </tr>
-          );
-        })}
-        {/* </div> */}
-      </table>
+   
+      <Table
+        fields={[
+          "E-mail",
+          "First Name",
+          "Last Name",
+          "Mobile Number",
+          "Address",
+        ]}
+        data={customerData}
+      />
       <Pagination
         setCurrentPage={setCurrentPage}
         totalPage={totalPage}

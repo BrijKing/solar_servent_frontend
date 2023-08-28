@@ -6,6 +6,7 @@ import {
   getAllEmployeeApi,
   searchEmployeeApi,
 } from "../../services/EmployeeService";
+import CustomTable from "../Table/CustomTable";
 
 const ViewEmployee = () => {
   const [employeeData, setEmployeeData] = useState({});
@@ -84,7 +85,7 @@ const ViewEmployee = () => {
           />
         </div>
       </form>
-      <table className={`w-[1000px] border shadow-md ${styles.table}`}>
+      {/* <table className={`w-[1000px] border shadow-md ${styles.table}`}>
         <tr className="bg-blue-400 shadow-md">
           <th className="p-4 ">E-mail</th>
           <th className="p-4"> role</th>
@@ -102,7 +103,12 @@ const ViewEmployee = () => {
             </tr>
           );
         })}
-      </table>
+      </table> */}
+      <CustomTable fields={[
+          "E-mail",
+          "Role"
+        ]}
+        data={employeeData}/>
       <Pagination
         setCurrentPage={setCurrentPage}
         totalPage={totalPage}
