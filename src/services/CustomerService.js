@@ -11,3 +11,7 @@ export async function searchCustomerApi(email) {
 export async function addCustomerForRevivew(data) {
   return await api.post(`/customer/forApprovement/add`, data);
 }
+
+export async function getPandingCustomerForApprovement() {
+  return await api.get(`/customer/forApprovement/getAll`);
+}
