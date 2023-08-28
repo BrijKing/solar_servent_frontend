@@ -45,9 +45,7 @@ const ViewCustomer = () => {
         });
       });
   };
-
-   console.log("customer data",customerData)
-
+  
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex justify-end mb-3">

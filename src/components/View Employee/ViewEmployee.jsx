@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
-
-import styles from "./ViewEmployee.module.css";
 import {
   getAllEmployeeApi,
   searchEmployeeApi,
@@ -85,25 +83,6 @@ const ViewEmployee = () => {
           />
         </div>
       </form>
-      {/* <table className={`w-[1000px] border shadow-md ${styles.table}`}>
-        <tr className="bg-blue-400 shadow-md">
-          <th className="p-4 ">E-mail</th>
-          <th className="p-4"> role</th>
-        </tr>
-        {Array.from(employeeData)?.map((data, index) => {
-          return (
-            <tr
-              key={data.id}
-              className={`text-center h-[60px] shadow-md ${
-                index % 2 !== 0 ? styles.evenRow : styles.oddRow
-              }`}
-            >
-              <td>{data.email}</td>
-              <td>{data.role}</td>
-            </tr>
-          );
-        })}
-      </table> */}
       <CustomTable fields={[
           "E-mail",
           "Role"
