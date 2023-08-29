@@ -23,3 +23,7 @@ export async function approveCustomer(id) {
 export async function rejectCustomer(id) {
   return await api.put(`/customer/forApprovement/reject/${id}`);
 }
+
+export async function getCustomerPdfById(id) {
+  return await api.get(`/customer/forApprovement/getCustomer/${id}`);
+}

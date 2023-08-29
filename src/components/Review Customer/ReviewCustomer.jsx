@@ -3,6 +3,7 @@ import CustomTable from "../Table/CustomTable";
 import { useEffect, useState } from "react";
 import {
   approveCustomer,
+  getCustomerPdfById,
   getPandingCustomerForApprovement,
   rejectCustomer,
 } from "../../services/CustomerService";
@@ -11,12 +12,22 @@ import styles from "./ReviewCustomer.module.css";
 import { AiFillEye } from "react-icons/ai";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PdfViewer from "../Pdf-viewer/PdfViewer";
 
 const ReviewCustomer = () => {
   const [reviewCustomer, setReviewCustomer] = useState([]);
   const [tableUpdated, setTableUpdated] = useState(false);
+  const [pdfData, setPdfData] = useState(null);
 
-  function handleView(email) {}
+  function handleView(email) {
+    getCustomerPdfById(email).then((res) => {
+      if (res.status === 200) {
+        setPdfData(res.data.pdfData);
+      } else {
+        alert("Something went wrong");
+      }
+    });
+  }
 
   function handleApprove(email) {
     approveCustomer(email).then((res) => {
@@ -72,6 +83,7 @@ const ReviewCustomer = () => {
         fields={["Email", "Added By", "Actions"]}
         data={reviewCustomer}
       />
+      <PdfViewer pdfData={pdfData} />
     </div>
   );
 };
