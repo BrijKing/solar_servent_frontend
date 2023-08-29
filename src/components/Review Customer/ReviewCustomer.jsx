@@ -92,7 +92,7 @@ const ReviewCustomer = () => {
         data={reviewCustomer}
       />
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <Modal isOpen={isModalOpen} onClose={closeModal} className="absolute left-[250px] top-[100px]">
         <PdfViewer pdfData={pdfData} />
       </Modal>
     </div>
