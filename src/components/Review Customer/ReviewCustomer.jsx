@@ -3,13 +3,15 @@ import CustomTable from "../Table/CustomTable";
 import { useEffect } from "react";
 import { getPandingCustomerForApprovement } from "../../services/CustomerService";
 import { useState } from "react";
+import styles from "./ReviewCustomer.module.css";
+import { AiFillEye } from "react-icons/ai";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ReviewCustomer = () => {
   const [reviewCustomer, setReviewCustomer] = useState([]);
 
-  function handleView(email) {
-    console.log(email);
-  }
+  function handleView(email) {}
 
   function handleApprove(email) {}
 
@@ -17,18 +19,22 @@ const ReviewCustomer = () => {
 
   useEffect(() => {
     getPandingCustomerForApprovement().then((res) => {
-      console.log("response ", res.data);
-
       let data = res.data.map((record) => {
         return {
           email: record.email,
           signedBy: record.signBy,
           actions: (
-            <>
-              <button onClick={() => handleView(record.email)}>V</button>
-              <button onClick={() => handleApprove(record.email)}>T</button>
-              <button onClick={() => handleDisApprove(record.email)}>T</button>
-            </>
+            <div className={`${styles["action-btn"]}`}>
+              <button onClick={() => handleView(record.email)}>
+                <AiFillEye />
+              </button>
+              <button onClick={() => handleApprove(record.email)}>
+                <FontAwesomeIcon icon={faCheck} />
+              </button>
+              <button onClick={() => handleDisApprove(record.email)}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
           ),
         };
       });
@@ -36,7 +42,6 @@ const ReviewCustomer = () => {
       setReviewCustomer(data);
     });
   }, []);
-  console.log("new data ", reviewCustomer);
   return (
     <div>
       <CustomTable
