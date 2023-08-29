@@ -1,8 +1,12 @@
 import React from "react";
 import CustomTable from "../Table/CustomTable";
-import { useEffect } from "react";
-import { getPandingCustomerForApprovement } from "../../services/CustomerService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  approveCustomer,
+  getPandingCustomerForApprovement,
+  rejectCustomer,
+} from "../../services/CustomerService";
+
 import styles from "./ReviewCustomer.module.css";
 import { AiFillEye } from "react-icons/ai";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -10,12 +14,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ReviewCustomer = () => {
   const [reviewCustomer, setReviewCustomer] = useState([]);
+  const [tableUpdated, setTableUpdated] = useState(false);
 
   function handleView(email) {}
 
-  function handleApprove(email) {}
+  function handleApprove(email) {
+    approveCustomer(email).then((res) => {
+      if (res.status === 200) {
+        alert("Customer Approved");
+        setTableUpdated((currState) => !currState);
+      } else {
+        alert("Something went wrong");
+      }
+    });
+  }
 
-  function handleDisApprove(email) {}
+  function handleDisApprove(email) {
+    rejectCustomer(email).then((res) => {
+      if (res.status === 200) {
+        alert("Customer Rejected");
+
+        setTableUpdated((currState) => !currState);
+      } else {
+        alert("Something went wrong");
+      }
+    });
+  }
 
   useEffect(() => {
     getPandingCustomerForApprovement().then((res) => {
@@ -41,7 +65,7 @@ const ReviewCustomer = () => {
 
       setReviewCustomer(data);
     });
-  }, []);
+  }, [tableUpdated]);
   return (
     <div>
       <CustomTable

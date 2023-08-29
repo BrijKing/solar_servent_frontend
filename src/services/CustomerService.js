@@ -15,3 +15,11 @@ export async function addCustomerForRevivew(data) {
 export async function getPandingCustomerForApprovement() {
   return await api.get(`/customer/forApprovement/getAll`);
 }
+
+export async function approveCustomer(id) {
+  return await api.put(`/customer/forApprovement/approve/${id}`);
+}
+
+export async function rejectCustomer(id) {
+  return await api.put(`/customer/forApprovement/reject/${id}`);
+}
